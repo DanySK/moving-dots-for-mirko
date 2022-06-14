@@ -1,26 +1,16 @@
 incarnation: protelis
 
-network-model:
-  type: ConnectWithinDistance
-  parameters: [0.5]
-
-_gradient: &gradient
-  - time-distribution: 1
-    program: org:protelis:tutorial:distanceTo
-  - program: send
+environment:
+  type: ImageEnvironment
+  parameters:
+    - square.png
 
 deployments:
-  type: Grid
-  parameters: [-5, -5, 5, 5, 0.25, 0.25, 0.1, 0.1]
-  contents:
-    - in:
-        type: Rectangle
-        parameters: [-6, -6, 2, 2]
-      molecule: source
-      concentration: true
-    - in:
-        type: Rectangle
-        parameters: [4, 4, 6, 6]
-      molecule: destination
-      concentration: true
-  programs: *gradient
+  type: Rectangle
+  parameters: [3000, 80, 80, 1030, 1030]
+  programs:
+    - time-distribution: 1
+      type: Event
+      actions:
+        - type: LevyWalk
+          parameters: 2
