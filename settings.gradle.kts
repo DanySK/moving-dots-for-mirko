@@ -11,5 +11,3 @@ gradleEnterprise {
         publishOnFailure()
     }
 }
-
-enableFeaturePreview("VERSION_CATALOGS")
